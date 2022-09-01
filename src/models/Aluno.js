@@ -10,7 +10,7 @@ export default class Aluno extends Model {
           validate: {
             len: {
               args: [3, 255],
-              msg: "Nome precisa ter entre 3 e255 caracteres",
+              msg: "Nome precisa ter entre 3 e 255 caracteres",
             },
           },
         },
@@ -20,7 +20,7 @@ export default class Aluno extends Model {
           validate: {
             len: {
               args: [3, 255],
-              msg: "Sobrenome precisa ter entre 3 e255 caracteres",
+              msg: "Sobrenome precisa ter entre 3 e 255 caracteres",
             },
           },
         },
@@ -69,5 +69,9 @@ export default class Aluno extends Model {
       }
     );
     return this;
+  }
+
+  static associate(models) {
+    this.hasMany(models.Foto, { foreignKey: "aluno_id" });
   }
 }
